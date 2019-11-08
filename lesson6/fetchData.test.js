@@ -24,7 +24,7 @@ import { fetchData } from './fetchData'
 // })
 
 
-// 返回Promise对象的另一种测试
+// 返回Promise对象的另一种测试1
 // test('fetchData返回结果为 { success: true }', () => {
 //     return expect(fetchData()).resolves.toMatchObject({
 //         data: {
@@ -38,7 +38,7 @@ import { fetchData } from './fetchData'
 // })
 
 
-// 返回Promise对象的另一种测试
+// 返回Promise对象的另一种测试2
 // test('fetchData返回结果为 { success: true }', async () => {
 //     await expect(fetchData()).resolves.toMatchObject({
 //         data: {
@@ -47,6 +47,23 @@ import { fetchData } from './fetchData'
 //     })
 // })
 
+// test('fetchData返回结果为 404', async () => {
+//     await expect(fetchData()).rejects.toThrow()
+// })
+
+
+
+// 返回Promise对象的另一种测试3
+// test('fetchData返回结果为 { success: true }', async () => {
+//     const response = await fetchData()
+//     expect(response.data).toEqual({ success: true })
+// })
+
 test('fetchData返回结果为 404', async () => {
-    await expect(fetchData()).rejects.toThrow()
+    expect.assertions(1)
+    try {
+        await fetchData()
+    } catch(e) {
+        expect(e.toString()).toEqual('Error: Request failed with status code 404')
+    }
 })
