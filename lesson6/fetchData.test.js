@@ -33,6 +33,20 @@ import { fetchData } from './fetchData'
 //     })
 // })
 
-test('fetchData返回结果为 404', () => {
-    return expect(fetchData()).rejects.toThrow()
+// test('fetchData返回结果为 404', () => {
+//     return expect(fetchData()).rejects.toThrow()
+// })
+
+
+// 返回Promise对象的另一种测试
+// test('fetchData返回结果为 { success: true }', async () => {
+//     await expect(fetchData()).resolves.toMatchObject({
+//         data: {
+//             success: true
+//         }
+//     })
+// })
+
+test('fetchData返回结果为 404', async () => {
+    await expect(fetchData()).rejects.toThrow()
 })
