@@ -8,15 +8,31 @@ import { fetchData } from './fetchData'
 //     })
 // })
 
+
+// 返回Promise对象的测试
 // test('fetchData返回结果为 { success: true }', () => {
 //     return fetchData().then((res) => {
 //         expect(res.data).toEqual({ success: true })
 //     })
 // })
 
+// test('fetchData返回结果为 404', () => {
+//     expect.assertions(1) // 表示下面的expect结果必须是真，并且至少执行一个下面的expect的语法。此时不返回404就报错了
+//     return fetchData().catch((err) => {
+//         expect(err.toString().indexOf('404') > -1).toBe(true) // 这个时候即使不是404的情况，测试也会通过
+//     })
+// })
+
+
+// 返回Promise对象的另一种测试
+// test('fetchData返回结果为 { success: true }', () => {
+//     return expect(fetchData()).resolves.toMatchObject({
+//         data: {
+//             success: true
+//         }
+//     })
+// })
+
 test('fetchData返回结果为 404', () => {
-    expect.assertions(1) // 表示下面的expect结果必须是真，并且至少执行一个下面的expect的语法。此时不返回404就报错了
-    return fetchData().catch((err) => {
-        expect(err.toString().indexOf('404') > -1).toBe(true) // 这个时候即使不是404的情况，测试也会通过
-    })
+    return expect(fetchData()).rejects.toThrow()
 })
